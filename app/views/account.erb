@@ -7,6 +7,16 @@
   </head>
   <body id="page-top">
     
+    <% if Helpers.is_logged_in?(session) == true %>
+    <% @logged_in_user = Helpers.current_user(session) %>
+    <h1>Welcome <%=@logged_in_user.username%></h1>
+    <h3>Your Balance: <%=@logged_in_user.balance%></h3>
+    
+    <% else %>
+    <p>You Must <a href="/">Log In</a> to View Your Balance</p>
+    <% end %>
+    
+    <a href="/logout">Log Out</a>
 
   </body>
 </html>
